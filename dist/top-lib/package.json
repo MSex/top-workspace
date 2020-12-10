@@ -1,0 +1,21 @@
+{
+  "name": "top-lib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^11.0.3",
+    "@angular/core": "^11.0.3"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/top-lib.umd.js",
+  "module": "fesm2015/top-lib.js",
+  "es2015": "fesm2015/top-lib.js",
+  "esm2015": "esm2015/top-lib.js",
+  "fesm2015": "fesm2015/top-lib.js",
+  "typings": "top-lib.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
+}
