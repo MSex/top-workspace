@@ -19,4 +19,22 @@ export declare class MeetingsImpl implements Meetings {
     static ɵfac: i0.ɵɵFactoryDef<MeetingsImpl, never>;
     static ɵprov: i0.ɵɵInjectableDef<MeetingsImpl>;
 }
+export declare class User {
+    id: string;
+    name: string;
+    constructor(id: string, name: string);
+}
+export declare abstract class Users {
+    abstract get(id: string): Observable<User>;
+    abstract list(): Observable<User[]>;
+}
+export declare class UsersImpl implements Users {
+    private _storage;
+    private _list;
+    constructor();
+    list(): BehaviorSubject<User[]>;
+    get(id: string): Observable<User>;
+    static ɵfac: i0.ɵɵFactoryDef<UsersImpl, never>;
+    static ɵprov: i0.ɵɵInjectableDef<UsersImpl>;
+}
 //# sourceMappingURL=top-lib.service.d.ts.map

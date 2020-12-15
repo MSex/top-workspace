@@ -32,6 +32,35 @@ MeetingsImpl.ɵprov = ɵɵdefineInjectable({ token: MeetingsImpl, factory: Meeti
 /*@__PURE__*/ (function () { ɵsetClassMetadata(MeetingsImpl, [{
         type: Injectable
     }], function () { return []; }, null); })();
+class User {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+class Users {
+}
+class UsersImpl {
+    constructor() {
+        this._storage = [
+            new User("1", "Guto"),
+            new User("2", "Renato"),
+            new User("3", "MSex"),
+        ];
+        this._list = new BehaviorSubject(this._storage);
+    }
+    list() {
+        return this._list;
+    }
+    get(id) {
+        return this._list.pipe(mergeMap(item => item), filter(x => x.id === id));
+    }
+}
+UsersImpl.ɵfac = function UsersImpl_Factory(t) { return new (t || UsersImpl)(); };
+UsersImpl.ɵprov = ɵɵdefineInjectable({ token: UsersImpl, factory: UsersImpl.ɵfac });
+/*@__PURE__*/ (function () { ɵsetClassMetadata(UsersImpl, [{
+        type: Injectable
+    }], function () { return []; }, null); })();
 
 class TopLibComponent {
     constructor() { }
@@ -79,5 +108,5 @@ TopLibModule.ɵinj = ɵɵdefineInjector({ factory: function TopLibModule_Factory
  * Generated bundle index. Do not edit.
  */
 
-export { Meeting, Meetings, MeetingsImpl, TopLibComponent, TopLibModule };
+export { Meeting, Meetings, MeetingsImpl, TopLibComponent, TopLibModule, User, Users, UsersImpl };
 //# sourceMappingURL=top-lib.js.map

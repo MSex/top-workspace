@@ -41,6 +41,42 @@
                 type: i0.Injectable
             }], function () { return []; }, null);
     })();
+    var User = /** @class */ (function () {
+        function User(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+        return User;
+    }());
+    var Users = /** @class */ (function () {
+        function Users() {
+        }
+        return Users;
+    }());
+    var UsersImpl = /** @class */ (function () {
+        function UsersImpl() {
+            this._storage = [
+                new User("1", "Guto"),
+                new User("2", "Renato"),
+                new User("3", "MSex"),
+            ];
+            this._list = new rxjs.BehaviorSubject(this._storage);
+        }
+        UsersImpl.prototype.list = function () {
+            return this._list;
+        };
+        UsersImpl.prototype.get = function (id) {
+            return this._list.pipe(operators.mergeMap(function (item) { return item; }), operators.filter(function (x) { return x.id === id; }));
+        };
+        return UsersImpl;
+    }());
+    UsersImpl.ɵfac = function UsersImpl_Factory(t) { return new (t || UsersImpl)(); };
+    UsersImpl.ɵprov = i0.ɵɵdefineInjectable({ token: UsersImpl, factory: UsersImpl.ɵfac });
+    /*@__PURE__*/ (function () {
+        i0.ɵsetClassMetadata(UsersImpl, [{
+                type: i0.Injectable
+            }], function () { return []; }, null);
+    })();
 
     var TopLibComponent = /** @class */ (function () {
         function TopLibComponent() {
@@ -100,6 +136,9 @@
     exports.MeetingsImpl = MeetingsImpl;
     exports.TopLibComponent = TopLibComponent;
     exports.TopLibModule = TopLibModule;
+    exports.User = User;
+    exports.Users = Users;
+    exports.UsersImpl = UsersImpl;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

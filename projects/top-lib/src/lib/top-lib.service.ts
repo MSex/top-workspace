@@ -43,3 +43,44 @@ export class MeetingsImpl implements Meetings {
   }
 
 }
+
+export class User {
+  id: string;
+  name: string;
+
+  constructor(id: string, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+}
+
+export abstract class Users {
+  abstract get(id: string): Observable<User>;
+
+  abstract list(): Observable<User[]>;
+}
+
+@Injectable()
+export class UsersImpl implements Users {
+  private _storage = [
+    new User("1", "Guto"),
+    new User("2", "Renato"),
+    new User("3", "MSex"),
+  ];
+  private _list = new BehaviorSubject<User[]>(this._storage);
+
+  constructor() {}
+
+  public list() {
+    return this._list;
+  }
+
+  public get(id: string) {
+    return this._list.pipe(
+      mergeMap(item => item),
+      filter(x => x.id === id)
+    );
+  }
+
+}
+
