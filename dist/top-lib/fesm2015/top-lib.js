@@ -1,86 +1,26 @@
-import { BehaviorSubject } from 'rxjs';
-import { ɵɵdefineInjectable, ɵsetClassMetadata, Injectable, ɵɵdefineComponent, ɵɵelementStart, ɵɵtext, ɵɵelementEnd, Component, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
-import { mergeMap, filter } from 'rxjs/operators';
+import { ɵɵdefineComponent, ɵɵelementStart, ɵɵtext, ɵɵelementEnd, ɵsetClassMetadata, Component, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
 
-class Meeting {
-    constructor(id, description, password) {
-        this.id = id;
-        this.description = description;
-        this.password = password;
-    }
-}
-class Meetings {
-}
-class MeetingsImpl {
-    constructor() {
-        this._storage = [
-            new Meeting("1", "Primeiro", "asdf"),
-            new Meeting("2", "Segundo", "asdf"),
-            new Meeting("3", "Terceiro", "asdf"),
-        ];
-        this._list = new BehaviorSubject(this._storage);
-    }
-    list() {
-        return this._list;
-    }
-    get(id) {
-        return this._list.pipe(mergeMap(item => item), filter(x => x.id === id));
-    }
-}
-MeetingsImpl.ɵfac = function MeetingsImpl_Factory(t) { return new (t || MeetingsImpl)(); };
-MeetingsImpl.ɵprov = ɵɵdefineInjectable({ token: MeetingsImpl, factory: MeetingsImpl.ɵfac });
-/*@__PURE__*/ (function () { ɵsetClassMetadata(MeetingsImpl, [{
-        type: Injectable
-    }], function () { return []; }, null); })();
-class User {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-}
-class Users {
-}
-class UsersImpl {
-    constructor() {
-        this._storage = [
-            new User("1", "Guto"),
-            new User("2", "Renato"),
-            new User("3", "MSex"),
-        ];
-        this._list = new BehaviorSubject(this._storage);
-    }
-    list() {
-        return this._list;
-    }
-    get(id) {
-        return this._list.pipe(mergeMap(item => item), filter(x => x.id === id));
-    }
-}
-UsersImpl.ɵfac = function UsersImpl_Factory(t) { return new (t || UsersImpl)(); };
-UsersImpl.ɵprov = ɵɵdefineInjectable({ token: UsersImpl, factory: UsersImpl.ɵfac });
-/*@__PURE__*/ (function () { ɵsetClassMetadata(UsersImpl, [{
-        type: Injectable
-    }], function () { return []; }, null); })();
-
-class TopLibComponent {
+class TopNavbar {
     constructor() { }
     ngOnInit() {
     }
 }
-TopLibComponent.ɵfac = function TopLibComponent_Factory(t) { return new (t || TopLibComponent)(); };
-TopLibComponent.ɵcmp = ɵɵdefineComponent({ type: TopLibComponent, selectors: [["lib-top-lib"]], decls: 2, vars: 0, template: function TopLibComponent_Template(rf, ctx) { if (rf & 1) {
-        ɵɵelementStart(0, "p");
-        ɵɵtext(1, " top-lib works! ");
+TopNavbar.ɵfac = function TopNavbar_Factory(t) { return new (t || TopNavbar)(); };
+TopNavbar.ɵcmp = ɵɵdefineComponent({ type: TopNavbar, selectors: [["lib-top-lib"]], decls: 5, vars: 0, consts: [["href", "/meetings"], ["href", "/users"]], template: function TopNavbar_Template(rf, ctx) { if (rf & 1) {
+        ɵɵelementStart(0, "a", 0);
+        ɵɵtext(1, "Meetings");
+        ɵɵelementEnd();
+        ɵɵtext(2, "\u00A0\u00A0\u00A0\u00A0");
+        ɵɵelementStart(3, "a", 1);
+        ɵɵtext(4, "Users");
         ɵɵelementEnd();
     } }, encapsulation: 2 });
-/*@__PURE__*/ (function () { ɵsetClassMetadata(TopLibComponent, [{
+/*@__PURE__*/ (function () { ɵsetClassMetadata(TopNavbar, [{
         type: Component,
         args: [{
                 selector: 'lib-top-lib',
                 template: `
-    <p>
-      top-lib works!
-    </p>
+            <a href="/meetings">Meetings</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/users">Users</a>
   `,
                 styles: []
             }]
@@ -90,13 +30,13 @@ class TopLibModule {
 }
 TopLibModule.ɵmod = ɵɵdefineNgModule({ type: TopLibModule });
 TopLibModule.ɵinj = ɵɵdefineInjector({ factory: function TopLibModule_Factory(t) { return new (t || TopLibModule)(); }, imports: [[]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(TopLibModule, { declarations: [TopLibComponent], exports: [TopLibComponent] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(TopLibModule, { declarations: [TopNavbar], exports: [TopNavbar] }); })();
 /*@__PURE__*/ (function () { ɵsetClassMetadata(TopLibModule, [{
         type: NgModule,
         args: [{
-                declarations: [TopLibComponent],
+                declarations: [TopNavbar],
                 imports: [],
-                exports: [TopLibComponent]
+                exports: [TopNavbar]
             }]
     }], null, null); })();
 
@@ -108,5 +48,5 @@ TopLibModule.ɵinj = ɵɵdefineInjector({ factory: function TopLibModule_Factory
  * Generated bundle index. Do not edit.
  */
 
-export { Meeting, Meetings, MeetingsImpl, TopLibComponent, TopLibModule, User, Users, UsersImpl };
+export { TopLibModule, TopNavbar };
 //# sourceMappingURL=top-lib.js.map

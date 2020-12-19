@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { TopLibComponent } from './top-lib.component';
+import { TopNavbar } from './top-lib.component';
 
 
 
 @NgModule({
-  declarations: [TopLibComponent],
+  declarations: [TopNavbar],
   imports: [
   ],
-  exports: [TopLibComponent]
+  exports: [TopNavbar]
 })
 export class TopLibModule { }

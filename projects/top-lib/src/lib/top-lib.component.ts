@@ -3,14 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'lib-top-lib',
   template: `
-    <p>
-      top-lib works!
-    </p>
+            <a href="/meetings">Meetings</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/users">Users</a>
   `,
   styles: [
   ]
 })
-export class TopLibComponent implements OnInit {
+export class TopNavbar implements OnInit {
 
   constructor() { }
 
